@@ -2,13 +2,7 @@
 
 The reward design is intended to prevent three behaviors from collapsing into a single refusal action: solving valid problems, detecting input-side defects, and abstaining from solvable but currently too-hard problems.
 
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=\linewidth]{figures/reward_.pdf}
-    \caption{UnsolvableRL reward design. The framework decouples three behaviors: reasoning accuracy on solvable instances, unsolvability detection for input-side defects, and capability calibration for solvable but currently hard instances. Panel (a) visualizes the objective solvability reward, including correctness reward on solvable queries, unsolvability reward on flawed queries, and a false unsolvability penalty for labeling solvable queries as unsolvable. Panel (b) visualizes capability calibration, which regulates \texttt{<beyond\_capacity>} refusal by comparing the target threshold \(\tau\) with the ground-truth-verified rollout accuracy \(\beta\): refusal is encouraged when \(\tau>\beta\) and discouraged when \(\tau<\beta\).}
-    % {\textcolor{red}{Revise the image.}}}
-    \label{fig:reward_design}
-\end{figure*}
+
 \subsection{Problem Formulation}
 We model the task as generating a response $y$ for instance $x \in \mathcal{D}$, where $x$ is categorized by solvability ($\mathcal{S}$ or $\mathcal{U}$). Difficulty is policy-relative rather than an intrinsic ground-truth label: a solvable instance is treated as currently hard when the model's ground-truth-verified rollout accuracy falls below the dynamic target threshold. We optimize policy $\pi_\theta$ for three behavioral objectives:
 (1) \textbf{Reasoning Accuracy} for solvable instances the current policy can reliably answer, ensuring correct reasoning paths and answers; 
