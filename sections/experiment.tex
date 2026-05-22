@@ -1,7 +1,7 @@
 \section{Experiments}
 \label{sec:results}
 
-We trained and evaluated \textbf{Deepseek-Distill-Llama3-8B} (Llama3-8B) \citep{grattafiori2024llama, guo2025deepseek} and \textbf{Qwen3-4B} \citep{yang2025qwen3technicalreport} in think mode on UnsolvableQA, reporting AVG@8 for AIME partitions and AVG@4 elsewhere. In our standardized setup, the final Qwen3-4B and Llama3-8B models are trained for 320 and 400 steps, respectively, while the ablation models were trained for 120 steps due to computational cost constraints.
+We trained and evaluated \textbf{Deepseek-Distill-Llama3-8B} (Llama3-8B) \citep{grattafiori2024llama, guo2025deepseek} and \textbf{Qwen3-4B} \citep{yang2025qwen3technicalreport} in think mode on UnsolvableQA, reporting AVG@8 for AIME partitions and AVG@4 elsewhere. In our standardized setup, the final Qwen3-4B and Llama3-8B models are trained for 320 and 400 steps, respectively, while the ablation models were trained for 120 steps due to computational cost constraints. We use the longer runs to report converged performance, and use the 120-step ablations only for controlled, fixed-budget component attribution; therefore, ablation conclusions are drawn within the 120-step setting rather than by directly comparing ablation checkpoints against final models.
 
 
 \subsection{Main Results: Learning Solvability Boundaries}
@@ -82,7 +82,7 @@ The transition to fine-grained diagnosis yields three critical insights:
     }
     \label{fig:performance_comparison}
 \end{figure*}
-To understand the contributions of data and reward mechanisms, we conducted a comprehensive ablation study comparing four configurations, defined by the inclusion of \textbf{Unsolvable Data (UnsData)} and the \textbf{False Unsolvability Penalty (P)}. Figure~\ref{fig:ablation_scatter} compares: (1) \textbf{w/o UnsData w/o P} (baseline); (2) \textbf{w/o UnsData w/ P} (penalty only); (3) \textbf{w/ UnsData w/o P} (data only); and (4) \textbf{w/ UnsData w/ P} (our full method). \vspace{-2pt}
+To understand the contributions of data and reward mechanisms, we conducted a comprehensive ablation study comparing four configurations under the same 120-step training budget, defined by the inclusion of \textbf{Unsolvable Data (UnsData)} and the \textbf{False Unsolvability Penalty (P)}. Figure~\ref{fig:ablation_scatter} compares: (1) \textbf{w/o UnsData w/o P} (baseline); (2) \textbf{w/o UnsData w/ P} (penalty only); (3) \textbf{w/ UnsData w/o P} (data only); and (4) \textbf{w/ UnsData w/ P} (our full method). The ``Final'' checkpoints in the main table are reported separately to show convergence, not used as baselines for these component-level ablations. \vspace{-2pt}
 
 \paragraph{Explicit Unsolvable Data is a Prerequisite for Detection.}
 As shown in Figure~\ref{fig:ablation_scatter}, the naive baseline trained without unsolvable data (\textit{w/o UnsData}) lacks the fundamental capability to recognize unsolvability. For Qwen3-4B, detection is weak ($U=62.6\%$). Introducing explicit unsolvable data provides the necessary supervision, boosting detection significantly ($U \to 84.8\%$). This confirms that optimizing solely for reasoning correctness on solvable tasks is insufficient.\vspace{-5pt}
