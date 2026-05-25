@@ -1,0 +1,67 @@
+
+
+\begin{table*}[t]
+\centering
+\small
+\resizebox{\textwidth}{!}{
+\begin{tabular}{ll c c c c c c c}
+\toprule
+ & & \multicolumn{3}{c}{\textbf{Advanced LLMs}} & \multicolumn{2}{c}{\textbf{Llama3-8B}} & \multicolumn{2}{c}{\textbf{Qwen3-4B}} \\
+\cmidrule(lr){3-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
+\textbf{Dataset} & \textbf{Metric} & Deepseek-V3.2-R & GPT-5.2-Low & Gemini-3 & Distill & + UnsolvableRL & Instruct & + UnsolvableRL \\
+\midrule
+\multirow{2}{*}{Game24} 
+ & S / U & \textbf{98.0} / 77.5 & 64.0 / 66.0 & 94.0 / 94.0 & 28.0 / 48.0 & 80.0 / 22.0 & 81.0 / 17.0 & 94.5 / 99.0 \\
+ & Mean & 87.8 & 65.0 & 94.0 & 38.0 & 51.0 \pos{13.0} & 49.0 & \textbf{96.8} \pos{47.8} \\
+\midrule
+\multirow{2}{*}{HamCycle} 
+ & S / U & 83.5 / 94.0 & 97.9 / 94.0 & \textbf{100.0} / \textbf{98.0} & 27.1 / 2.0 & 52.1 / 100.0 & 37.5 / 57.0 & 41.1 / 94.5 \\
+ & Mean & 88.8 & 96.0 & \textbf{99.0} & 14.6 & 76.1 \pos{61.5} & 47.3 & 67.8 \pos{20.5} \\
+\midrule
+\multirow{2}{*}{HamPath} 
+ & S / U & 84.0 / 96.0 & 92.0 / 94.0 & \textbf{100.0} / 90.0 & 14.0 / 0.0 & 74.0 / 92.0 & 37.0 / 56.5 & 55.0 / \textbf{96.5} \\
+ & Mean & 90.0 & 93.0 & \textbf{95.0} & 7.0 & 83.0 \pos{76.0} & 46.8 & 75.8 \pos{29.0} \\
+\midrule
+\multirow{2}{*}{Hitori} 
+ & S / U & 70.0 / 86.0 & 62.0 / 98.0 & \textbf{98.0} / \textbf{100.0} & 6.0 / 56.0 & 30.0 / 76.0 & 34.5 / 6.5 & 63.5 / 94.5 \\
+ & Mean & 78.0 & 80.0 & \textbf{99.0} & 31.0 & 53.0 \pos{22.0} & 20.5 & 79.0 \pos{58.5} \\
+\midrule
+\multirow{2}{*}{Maze (Easy)} 
+ & S / U & \textbf{100.0} / 98.9 & 98.0 / \textbf{100.0} & 99.0 / 94.6 & 1.0 / 44.7 & 67.0 / 42.6 & 32.7 / 55.6 & 96.5 / 98.9 \\
+ & Mean & \textbf{99.5} & 99.0 & 96.8 & 22.9 & 54.8 \pos{31.9} & 44.1 & 97.7 \pos{53.6} \\
+\midrule
+\multirow{2}{*}{Maze (Hard)} 
+ & S / U & \textbf{98.0} / \textbf{98.0} & 86.0 / 94.0 & 96.0 / 91.0 & 0.0 / 52.0 & 13.0 / 35.0 & 13.3 / 64.5 & 65.8 / 89.0 \\
+ & Mean & \textbf{98.0} & 90.0 & 93.5 & 26.0 & 24.0 \scriptsize{(-2.0)} & 38.9 & 77.9 \pos{39.0} \\
+\midrule
+\multirow{2}{*}{AIME 24-25} 
+ & S / U & 85.0 / 40.3 & 90.0 / \textbf{42.5} & \textbf{95.0} / 21.2 & 35.0 / 39.4 & 43.3 / 44.7 & 67.9 / 14.8 & 69.6 / 40.4 \\
+ & Mean & 62.7 & \textbf{66.3} & 58.1 & 37.2 & 44.0 \pos{6.8} & 41.4 & 55.0 \pos{13.6} \\
+\midrule
+\multirow{2}{*}{\textbf{Overall}} 
+ & \textbf{S / U} & 88.4 / 84.4 & 84.3 / 84.1 & \textbf{97.4} / 84.1 & 15.9 / 34.6 & 51.3 \pos{35.4} / 58.9 \pos{24.3} & 43.4 / 38.8 & 69.4 \pos{26.0} / \textbf{87.5} \pos{48.7} \\
+ & \textbf{Mean} & 86.1 & 84.2 & \textbf{90.8} & 25.2 & 55.1 \pos{29.9} & 41.1 & 78.6 \pos{37.5} \\
+\midrule
+\textbf{MMLU-Pro} & Mean & 85.0 & 87.5 & \textbf{90.1} & 52.4 & 56.9 \pos{4.5} & 62.0 & 64.4 \pos{2.4} \\
+\textbf{GPQA} & Mean & 82.4 & \textbf{92.4} & 91.9 & 34.5 & 46.5 \pos{12.0} & 54.1 & 54.5 \pos{0.4} \\
+\textbf{ReliableMath} & Mean & 67.0 & 50.4 & 58.5 & 56.2 & \textbf{68.3} \pos{12.1} & 41.6 & 62.4 \pos{20.8} \\
+\bottomrule
+\end{tabular}}
+\caption{Performance on reasoning and general knowledge benchmarks. Reasoning datasets report \textbf{Solvable Accuracy (S)}, \textbf{Unsolvable Detection Rate (U)}, and their \textbf{Mean (M)}. Parentheses denote absolute improvements over the base model; \textbf{global best scores} are bolded.}
+\label{tab:vertical_main_results_compact}
+\end{table*}
+
+\subsection{Reward Design}
+\label{reward_design}
+As Figure~\ref{fig:reward_design} illustrates, UnsolvableRL implements this decoupling via three orthogonal reward components that must not collapse into undifferentiated refusal: $R = R_{\text{acc}} + R_{\text{detect}} + R_{\text{cal}}$.
+
+\textit{1) Reasoning Accuracy ($R_{\text{acc}}$):} For \textbf{solvable instances}, the model receives $R_{\text{acc}} = \alpha \in \{0, 1\}$ based on deterministic verification (e.g., SAT solvers or exact matchers). Incorrect reasoning yields a neutral reward ($\alpha=0$) rather than a penalty, preserving the incentive to attempt complex chains of thought. 
+
+\textit{2) Unsolvability Detection ($R_{\text{detect}}$):} This reward targets input-side answerability defects, especially missing support and constraint conflicts that make the problem specification incomplete or inconsistent. On \textbf{unsolvable problems}, outputting the canonical \texttt{<unsolvable>} tag earns $+1$ reward; hallucinating an answer yields $0$. Conversely, applying the \texttt{<unsolvable>} tag to a solvable problem incurs a \textit{False Unsolvability Penalty} ($\rho = -0.5$). As analyzed in Appendix~\ref{app:proof1}, this penalty increases the cost of false unsolvability and discourages universal rejection.
+
+\textit{3) Difficulty Calibration ($R_{\text{cal}}$):} To regulate subjective refusal on valid problems, we introduce a \textit{dynamic accuracy threshold} $\tau \in [0,1]$. Let $\beta$ be the empirical accuracy of the generation group's solvable subset; the calibration reward for outputting \texttt{<beyond\_capacity>} is:
+\begin{equation}
+\label{eg_dydc}
+ R_{\text{cal}}(y_i) = \lambda (\tau - \beta)\,\mathbf{1}[y_i \text{ contains } \texttt{<be..>}].
+\end{equation}
+This incentive promotes prudent abstention when current capabilities fall short ($\beta < \tau$) and penalizes lazy refusals when the model is empirically capable ($\beta > \tau$). We implement a \textit{progressive schedule}, monotonically increasing $\tau \to 1$ during training to safely transition from exploration to strict accuracy constraints, preventing reward collapse (Appendix~\ref{app:calibration_proof}).

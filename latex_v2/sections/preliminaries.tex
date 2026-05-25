@@ -1,0 +1,21 @@
+\section{UnsolvableRL Methodology}
+
+The reward design is intended to prevent three behaviors from collapsing into a single refusal action: solving valid problems, detecting input-side defects, and abstaining from solvable but currently too-hard problems.
+
+
+\subsection{Problem Formulation}
+We model the task as generating a response $y$ for instance $x \in \mathcal{D}$, where $x$ is categorized by solvability ($\mathcal{S}$ or $\mathcal{U}$). Difficulty is policy-relative rather than an intrinsic ground-truth label: a solvable instance is treated as currently hard when the model's ground-truth-verified rollout accuracy falls below the dynamic target threshold. We optimize policy $\pi_\theta$ for three behavioral objectives:
+(1) \textbf{Reasoning Accuracy} for solvable instances the current policy can reliably answer, ensuring correct reasoning paths and answers; 
+(2) \textbf{Unsolvability Detection} for $x \in \mathcal{U}$, requiring the model to output a specific tag (e.g., $\texttt{<unsolvable>}$) to avoid hallucinations on input-side defects; 
+(3) \textbf{Capability Calibration} for solvable instances that are empirically hard for the current policy, enforcing prudent abstention (e.g., $\texttt{<beyond\_capacity>}$) when verified rollout accuracy is below $\tau$.
+
+\subsection{Group-Relative Policy Optimization}
+We adopt Group Relative Policy Optimization (GRPO) to optimize $\pi_\theta$ without a separate value function. For each $x$, the policy samples a group of $G$ outputs $\mathcal{Y} = \{y_i\}_{i=1}^G$. The objective is:
+\begin{equation}
+\begin{aligned}
+\mathcal{J}(\theta) = \mathbb{E}_{x, \mathcal{Y}} \bigg[ & \frac{1}{G} \sum_{i=1}^{G} \min \Big( r_i(\theta) A_i, \\
+& \text{clip}(r_i(\theta), 1-\epsilon, 1+\epsilon) A_i \Big) \bigg]
+\end{aligned}
+\label{eq:grpo_obj}
+\end{equation}
+where $r_i(\theta) = \frac{\pi_\theta(y_i|x)}{\pi_{\theta_{\text{old}}}(y_i|x)}$. Advantage $A_i$ is estimated by normalizing rewards within the group: $A_i = (R(y_i \mid x) - \mu_{\mathbf{R}}) / (\sigma_{\mathbf{R}} + \epsilon)$, where $\mu_{\mathbf{R}}$ and $\sigma_{\mathbf{R}}$ are the mean and standard deviation of rewards $\mathbf{R}=\{R(y_j \mid x)\}_{j=1}^G$.
