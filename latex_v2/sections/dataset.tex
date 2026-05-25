@@ -9,8 +9,8 @@ Most existing benchmarks primarily focus on solvable tasks, which often leads to
 Programmatic verification is often infeasible for advanced math tasks. We therefore use \textbf{Reverse Construction} for the entire mathematical unsolvable-data pipeline (Figure~\ref{fig:pipeline}a): starting from solvable seed problems and verified solution paths, we reverse-engineer input-side flaws that make the final answer undefined. The pipeline has two stages:
 
 \vspace{0.3em}
-\noindent\textbf{Data Generate Process.}
-First, we filter seed problems, retaining only those where a strong LLMs (DeepSeek-Reasoner) successfully generates a correct result. Next, the same model plans and injects controlled constraint conflicts into the problem statement, such as mutually incompatible conditions or externally added constraints that make the original solution path invalid. Guided by the structural plan, these conflicts are precisely targeted within the problem statement while preserving the surface form of a plausible reasoning problem.
+\noindent\textbf{Data Generation Process.}
+First, we filter seed problems, retaining only those where a strong LLM (DeepSeek-Reasoner) successfully generates a correct solution. Next, the same model plans and injects controlled constraint conflicts into the problem statement, such as mutually incompatible conditions or externally added constraints that make the original solution path invalid. Guided by the structural plan, these conflicts are precisely targeted within the problem statement while preserving the surface form of a plausible reasoning problem.
 
 \vspace{0.3em}
 \noindent\textbf{Validation Process.}
